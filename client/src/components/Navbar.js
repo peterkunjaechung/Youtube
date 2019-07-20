@@ -13,15 +13,18 @@ class Navbar extends React.Component {
         <Menu.Menu 
           style={{padding: '20px'}}
           position='right'>
+          <Link to="/">
             <Menu.Item
               name='home'
               id='home'
               onClick={this.props.location.pathname === '/'}
             />
+          </Link>
           <Menu.Item
             name='logout'
             onClick={ () => handleLogout(this.props.history) }
           />
+          <Link to='/videos'>
           <Menu.Item
             style={{backgroundColor: "rgba(223, 32, 56, 1)", 
                     color: 'white',
@@ -30,7 +33,10 @@ class Navbar extends React.Component {
             name='Upload Video'
             color = "white"
             backgroundColor = "red"
+            active= {location.pathname === '/videos'}
+
           />
+          </Link>
         </Menu.Menu>
       )
     } else {
@@ -64,8 +70,11 @@ class Navbar extends React.Component {
           <Menu.Item>
             <Image
               size=' extra small'
-               src="https://resources-live.sketch.cloud/files/0c691bf6-95ea-4f35-ad3e-46e842eefe7b.png?Expires=1563757200&Signature=JZOLUzbbpRRf75jc9AVKNkdgULSUJTUXonJwc11yPZ2NOCYPKfCGxMJP5iBOTiNMr-z2aTOroxhU8Q44cxiG65nXwui7CDUvjika~Jq-m~FDsdLzlRVIU9f7n4Cbu9-sxXiZykhFvoFJdBA0TPvtHMQyoik9Zr2UjkmkPFDF2FU_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA" />
-          </Menu.Item>
+               src="https://resources-live.sketch.cloud/files/0c691bf6-95ea-4f35-ad3e-46e842eefe7b.png?Expires=1563757200&Signature=JZOLUzbbpRRf75jc9AVKNkdgULSUJTUXonJwc11yPZ2NOCYPKfCGxMJP5iBOTiNMr-z2aTOroxhU8Q44cxiG65nXwui7CDUvjika~Jq-m~FDsdLzlRVIU9f7n4Cbu9-sxXiZykhFvoFJdBA0TPvtHMQyoik9Zr2UjkmkPFDF2FU_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA"   
+               />
+
+          </Menu.Item 
+          >
           
             { this.rightNavItems() }
         </Menu>
