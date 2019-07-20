@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     resources :videos do
       resources :comments
     end
+    resources :comments do 
+      get "user-info/:user_id/:id", to: "comments#userinfo"
+    end 
   end 
 end

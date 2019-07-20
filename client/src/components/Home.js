@@ -1,8 +1,9 @@
-import React from 'react';
-import { Header, } from 'semantic-ui-react';
+import React from 'react'
 
-const Home = () => (
-  <Header as="h3" textAlign="center">UToob</Header>
-)
+const Home = ( ) => {
+  return (
+    <h2> test</h2>
+  )
+}
 
 export default Home;

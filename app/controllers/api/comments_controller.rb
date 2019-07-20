@@ -29,6 +29,10 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def userinfo
+    render json: Comment.user_info(params[:user_id], params[:id])
+  end
+
   def destroy
     @comment.destroy
   end
@@ -44,6 +48,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:title, :body, :video_id, :read)
+    params.require(:comment).permit(:title, :body, :video_id)
   end
 end
