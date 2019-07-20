@@ -21,3 +21,4 @@ roles = ['admin', 'user']
   end
 end
 puts "created a bunch of stuff and some comments"
+>>>>>>> 8ca0d92c82413b3f5410543e9daf04f334975b02
