@@ -40,10 +40,10 @@ class Home extends React.Component {
       return (
         <div>
           <br />
-          <Header as='h1'>All Video</Header>
+          <Header as='h1'>All Videos</Header>
           <br />
           <Card key={video.id}>
-            <Image src={video.trailer} />
+            <Image src={require('../images/starter-pic.png')} />
             <Card.Content>
               <Link to={`/videos/${video.id}`}>
               <Card.Header>
@@ -64,6 +64,7 @@ class Home extends React.Component {
               <Button color="green" icon basic onClick={() => this.upvote(video.id)}>
                 <Icon name="thumbs up" />
               </Button>
+              <Button>Delete</Button>
             </Card.Content>
           </Card>
         </div>
