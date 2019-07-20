@@ -29,6 +29,10 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def userinfo
+    render json: Comment.user_info(params[:user_id], params[:id])
+  end
+
   def destroy
     @comment.destroy
   end

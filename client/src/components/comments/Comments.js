@@ -11,8 +11,9 @@ const Comments = () => {
   useEffect(() => {
     axios.get(`/api/videos/${video_id}/comments`)
     .then( res => setComments(res.data))
-
   }, []); 
+
+  // 
 
 
 
@@ -21,11 +22,13 @@ const Comments = () => {
   // render individual comments 
   const renderComments = () => {
     {comments.map(comment => {
-      <Comment
+      <VideoComment
       video_id={comment.video_id}
       comment_id={comment_id}
       title={comment.title}
       body={comment.body}
+      user_id={comment.user_id}
+
 
 
       />
