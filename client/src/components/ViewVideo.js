@@ -3,10 +3,18 @@ import axios from 'axios';
 import styled from "styled-components";
 import Comments from "./comments/Comments"
 import {Image, Segment, Container, Input, Icon, Header, Grid, Form, Modal, Button} from 'semantic-ui-react';
+import { Player } from 'video-react';
+
 
 
 
 const ViewVideo = () => { 
+
+// get indiviudal videos 
+useEffect(() => {
+
+})
+
   return (
     <>
       <Image src={require('../images/starter-pic.png')} fluid />  
