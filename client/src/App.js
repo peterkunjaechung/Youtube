@@ -22,6 +22,7 @@ const App = () => (
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/comments" component={Comments}/>
+          {/* <Route exact path="/videos/:video_id" component={VideoView} /> */}
           <Route component={NoMatch} />
         </Switch>
       </Container>

@@ -39,17 +39,19 @@ class Home extends React.Component {
       return (
         <div>
           <br />
-          <Header as='h1'>Video</Header>
+          <Header as='h1'>All Video</Header>
           <br />
           <Card key={video.id}>
             <Image src={video.trailer} />
             <Card.Content>
+              <Link to={`/videos/${video.id}`}>
               <Card.Header>
                 { video.title }
               </Card.Header>
               <Card.Description>
                 { video.genre }
               </Card.Description>
+              </Link>
               <Card.Meta>
                 { video.description }
               </Card.Meta>
@@ -63,11 +65,6 @@ class Home extends React.Component {
               </Button>
             </Card.Content>
           </Card>
-          <Link to="/video">
-            <Button color="blue">
-              My Videos
-            </Button>
-          </Link>
         </div>
       );
     } else {
