@@ -1,6 +1,6 @@
 class Api::VideosController < ApplicationController
 
-  before_action :set_video, only: [:show, :update, :destroy]
+  before_action :set_video, only: [:show, :update, :destroy], except: [:userinfo]
 
   def index
     render json: Video.all 
@@ -63,6 +63,10 @@ class Api::VideosController < ApplicationController
       render json: {errors: @video.errors.full_messages}, status: 422
     end 
     
+  end
+
+  def userinfo
+    render json: Video.user_info(params[:user_id], params[:id])
   end
 
   def destroy
