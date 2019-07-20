@@ -42,7 +42,7 @@ class Home extends React.Component {
           <Header as='h1'>All Video</Header>
           <br />
           <Card key={video.id}>
-            <Image src={video.trailer} />
+            <Image src={require('../images/starter-pic.png')} />
             <Card.Content>
               <Link to={`/videos/${video.id}`}>
               <Card.Header>
