@@ -1,53 +1,24 @@
-roles = ['teacher', 'student']
-categories = ['Ruby', 'Javascript', 'React', 'SQL', 'JQuery']
-5.times do 
+roles = ['admin', 'user']
+3.times do
   name = Faker::Movies::HarryPotter.character
-  nickname = Faker::Games::Pokemon.move
   image = Faker::Avatar.image(name, "200x200", "png", "set3")
   email = Faker::Internet.email
-  password = "password"
-  u = User.create(name: name, email: email, nickname: nickname, password: password, password_confirmation: password)
-  5.times do 
-    course = Course.create(
-      title: Faker::Educator.course_name,
-      category: categories.sample
-      )
-    Enrollment.create(
-      role: roles.sample,
-      course_id: course.id,
-      user_id: u.id
-    )
-      5.times do 
-        lesson = Lesson.create(
-          name: Faker::Educator.subject,
-          description: Faker::Quote.most_interesting_man_in_the_world,
-          course_id: course.id
-        )
-        2.times do
-          v = Video.create(
-            title: Faker::Movies::LordOfTheRings.location,
-            description: Faker::Quote.yoda,
-            lesson_id: lesson.id,
-            url: "https://avatars1.githubusercontent.com/u/42650486?s=400&    u=d8fabdbbd0a6697e8ab883c0b4d971c87b7ac65c&v=4"
-            # url: videos.sample
-        )
-          5.times do 
-          c = Comment.create(
-            title: Faker::Cannabis.health_benefit,
-            body: Faker::Quote.famous_last_words,
-            user_id: u.id,
-            video_id: v.id
-          )
-            2.times do
-            Reply.create(
-              body: Faker::Quote.famous_last_words,
-              user_id: u.id,
-              comment_id: c.id
-            )
-            end
-          end
-        end
+  password = "password" 
+  password_confirmation = "password"
+  u = User.create(email: email, name: name, image: image, password: password, password_confirmation: password)
+    6.times do 
+      title = Faker::Book.title
+      duration = "5"
+      genre = Faker::Book.genre
+      description = Faker::Movie.quote
+      trailer = Faker::Internet.url
+      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
+    5.times do
+      title = Faker::Cannabis.health_benefit
+      body = Faker::Marketing.buzzwords
+      Comment.create( title: title, body: body, video_id: v.id, user_id: u.id)
     end
   end
 end
 puts "created a bunch of stuff and some comments"
+>>>>>>> 8ca0d92c82413b3f5410543e9daf04f334975b02
