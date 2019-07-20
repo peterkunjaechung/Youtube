@@ -3,14 +3,38 @@ import axios from 'axios';
 import styled from "styled-components";
 import {Image, Segment, Container, Input, Icon, Header, Grid, Form, Modal, Button} from 'semantic-ui-react';
 import { Player } from 'video-react';
+// import Moment from 'react-moment';
 
 
-const ViewVideo = () => { 
+
+const ViewVideo = (props) => { 
+  const [video, setVideo] = useState([]); 
+  const [userInfo, setUserInfo] = useState([])
+
 
 // get indiviudal videos 
 useEffect(() => {
+  const {video_id} = props.match.params
 
-})
+  axios.get(`/api/videos/${video_id}`)
+  .then(res => {
+    console.log(res.data)
+    setVideo(res.data); 
+
+  })
+}, [])
+
+useEffect(() => {
+  debugger
+  let id = props.match.params.video_id
+  axios.get(`/api/video-user-info/${video.user_id}/${id}`)
+  .then( res => {
+    console.log(res.data)
+    setUserInfo(res.data)
+  })
+}, [video])
+
+
 
   return (
     <>
@@ -21,8 +45,8 @@ useEffect(() => {
               <Grid.Column>
                 <Header
                   as='h2'
-                  content='Video Title'
-                  subheader='Date Imported'
+                  content={video.title}
+                  subheader={video.created_at}
                 />
               </Grid.Column>
               <Grid.Column textAlign="right">
@@ -58,9 +82,7 @@ useEffect(() => {
             </Grid.Row>
             <Grid.Row>
               <Header as={descriptionFont}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-              ex ea commodo consequat.
+              {video.description}
               </Header>
               <br/>
             </Grid.Row>
