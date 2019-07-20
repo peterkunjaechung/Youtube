@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
-  before_action :set_video, except: [:toggleread, :userinfo]
-  before_action :set_comment, only: [:show, :update, :destroy, :toggleread]
+  before_action :set_video
+  before_action :set_comment, only: [:show, :update, :destroy]
 
   def index
     render json: @video.comments
