@@ -25,14 +25,15 @@ useEffect(() => {
 }, [])
 
 useEffect(() => {
-  debugger
   let id = props.match.params.video_id
   axios.get(`/api/video-user-info/${video.user_id}/${id}`)
   .then( res => {
     console.log(res.data)
-    setUserInfo(res.data)
+    // setUserInfo(res.data)
   })
-}, [video])
+}, [])
+
+
 
 
 
