@@ -1,6 +1,6 @@
 import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
-import { Menu, Image } from 'semantic-ui-react'
+import { Menu, Image, Button } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 
 class Navbar extends React.Component {
@@ -10,12 +10,23 @@ class Navbar extends React.Component {
     
     if (user) {
       return (
-        <Menu.Menu position='right'>
+        <Menu.Menu 
+          style={{padding: '20px'}}
+          position='right'>
+            <Menu.Item
+              name='home'
+              id='home'
+              onClick={this.props.location.pathname === '/'}
+            />
           <Menu.Item
             name='logout'
             onClick={ () => handleLogout(this.props.history) }
           />
           <Menu.Item
+            style={{backgroundColor: "rgba(223, 32, 56, 1)", 
+                    color: 'white',
+                    borderRadius: '15px'
+                    }}
             name='Upload Video'
             color = "white"
             backgroundColor = "red"
@@ -53,16 +64,9 @@ class Navbar extends React.Component {
           <Menu.Item>
             <Image
               size=' extra small'
-              style={{padding: "5px",}}
                src="https://resources-live.sketch.cloud/files/0c691bf6-95ea-4f35-ad3e-46e842eefe7b.png?Expires=1563757200&Signature=JZOLUzbbpRRf75jc9AVKNkdgULSUJTUXonJwc11yPZ2NOCYPKfCGxMJP5iBOTiNMr-z2aTOroxhU8Q44cxiG65nXwui7CDUvjika~Jq-m~FDsdLzlRVIU9f7n4Cbu9-sxXiZykhFvoFJdBA0TPvtHMQyoik9Zr2UjkmkPFDF2FU_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA" />
           </Menu.Item>
-          <Link to='/'>
-            <Menu.Item
-              name='home'
-              id='home'
-              active={this.props.location.pathname === '/'}
-            />
-          </Link>
+          
             { this.rightNavItems() }
         </Menu>
       </div>
