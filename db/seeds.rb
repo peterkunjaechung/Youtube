@@ -1,28 +1,23 @@
 roles = ['admin', 'user']
-5.times do 
+3.times do
   name = Faker::Movies::HarryPotter.character
   image = Faker::Avatar.image(name, "200x200", "png", "set3")
   email = Faker::Internet.email
-  password = "password"
-  u = User.create(name: name, email: email, password: password, password_confirmation: password) 
-    
-        2.times do
-          v = Video.create(
-            title: Faker::Movies::LordOfTheRings.location,
-            description: Faker::Quote.yoda,
-            duration: Faker::Number.decimal(2),
-            genre: Faker::Book.genre,
-            trailer: "https://www.theuiaa.org/wp-content/uploads/2017/12/2018_banner.jpg"
-            # url: videos.sample
-        )
-          5.times do 
-          c = Comment.create(
-            title: Faker::Cannabis.health_benefit,
-            body: Faker::Quote.famous_last_words,
-            user_id: u.id,
-            video_id: v.id
-          )
-        end
+  password = "password" 
+  password_confirmation = "password"
+  u = User.create(email: email, name: name, image: image, password: password, password_confirmation: password)
+    6.times do 
+      title = Faker::Book.title
+      duration = "5"
+      genre = Faker::Book.genre
+      description = Faker::Movie.quote
+      trailer = Faker::Internet.url
+      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
+    5.times do
+      title = Faker::Cannabis.health_benefit
+      body = Faker::Marketing.buzzwords
+      Comment.create( title: title, body: body, video_id: v.id, user_id: u.id)
     end
+  end
 end
 puts "created a bunch of stuff and some comments"
