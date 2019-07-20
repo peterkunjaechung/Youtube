@@ -11,7 +11,7 @@ class Api::VideosController < ApplicationController
   end
 
   def create
-    video = @lesson.videos.new
+    video = Video.new 
     video.title = params[:title] ? params[:title] : video.title
     video.description = params[:description] ? params[:description] : video.description
 
