@@ -3,6 +3,7 @@ import {Segment, Comment, Image} from 'semantic-ui-react';
 import axios from 'axios'; 
 
 const Comments = () => {
+  const [toggleForm, setToggleForm ] = useState(false); 
   const [comments, setComments] = useState([]); 
 
 
@@ -11,9 +12,25 @@ const Comments = () => {
     axios.get(`/api/videos/${video_id}/comments`)
     .then( res => setComments(res.data))
 
-  }, [])
+  }, []); 
 
-  // add comments 
+
+
+
+
+  // render individual comments 
+  const renderComments = () => {
+    {comments.map(comment => {
+      <Comment
+      video_id={comment.video_id}
+      comment_id={comment_id}
+      title={comment.title}
+      body={comment.body}
+
+
+      />
+    })}
+  }
 
 
 
@@ -22,7 +39,7 @@ const Comments = () => {
     <Segment padded raised>
 
       <Comment.Group>
-
+       {renderComments()}
       </Comment.Group>
       
 
