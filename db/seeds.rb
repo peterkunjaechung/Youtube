@@ -17,7 +17,7 @@ roles = ['admin', 'user']
       thumbnail = "BigBuckBunny.jpg"
       like = 2000
       dislike = 3340
-      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
+      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, thumbnail: thumbnail, like: like, dislike: dislike, user_id: u.id)
     5.times do
       title = Faker::Cannabis.health_benefit
       body = Faker::Marketing.buzzwords
@@ -44,7 +44,7 @@ roles = ['admin', 'user']
       thumbnail = "ElephantsDream.jpg"
       like = 20342
       dislike = 1239
-      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
+      v = Video.create(thumbnail: thumbnail, like: like, dislike: dislike, title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
     5.times do
       title = Faker::Cannabis.health_benefit
       body = Faker::Marketing.buzzwords
@@ -71,7 +71,7 @@ roles = ['admin', 'user']
       thumbnail = "Sintel.jpg"
       like = 64236
       dislike = 7652
-      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
+      v = Video.create(thumbnail: thumbnail, like: like, dislike: dislike, title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
     5.times do
       title = Faker::Cannabis.health_benefit
       body = Faker::Marketing.buzzwords
@@ -98,7 +98,7 @@ roles = ['admin', 'user']
       thumbnail = "TearsOfSteel.jpg"
       like = 4352
       dislike = 65438
-      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
+      v = Video.create(thumbnail: thumbnail, like: like, dislike: dislike, title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
     5.times do
       title = Faker::Cannabis.health_benefit
       body = Faker::Marketing.buzzwords
@@ -124,7 +124,7 @@ roles = ['admin', 'user']
       thumbnail = "WeAreGoingOnBullrun.jpg"
       like = 98765
       dislike = 548
-      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
+      v = Video.create(thumbnail: thumbnail, like: like, dislike: dislike, title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
     5.times do
       title = Faker::Cannabis.health_benefit
       body = Faker::Marketing.buzzwords
@@ -151,7 +151,7 @@ roles = ['admin', 'user']
       thumbnail = "WhatCarCanYouGetForAGrand.jpg"
       like = 70124
       dislike = 662
-      v = Video.create(title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
+      v = Video.create(thumbnail: thumbnail, like: like, dislike: dislike, title: title, duration: duration, genre: genre, description: description, trailer: trailer, user_id: u.id)
     5.times do
       title = Faker::Cannabis.health_benefit
       body = Faker::Marketing.buzzwords
