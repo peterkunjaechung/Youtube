@@ -14,6 +14,9 @@ class Api::VideosController < ApplicationController
     video = Video.new 
     video.title = params[:title] ? params[:title] : video.title
     video.description = params[:description] ? params[:description] : video.description
+    video.genre = params[:genre] ? params[:genre] : video.genre 
+    video.duration = params[:duration] ? params[:duration] : video.duration
+    video.trailer = params[:tailer] ? params[:trailer] : video.trailer
 
     file = params[:file]
     if file
@@ -38,6 +41,9 @@ class Api::VideosController < ApplicationController
     # @video #Video.find(params[:id])
     @video.title = params[:title] ? params[:title] : @video.title
     @video.description = params[:description] ? params[:description] : @video.description
+    video.genre = params[:genre] ? params[:genre] : video.genre 
+    video.duration = params[:duration] ? params[:duration] : video.duration
+    video.trailer = params[:tailer] ? params[:trailer] : video.trailer
 
     file = params[:file]
     if file
@@ -70,6 +76,6 @@ class Api::VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:title, :description, :url)
+    params.require(:video).permit(:title, :description, :duration, :trailer, :genre, :url)
   end
 end
