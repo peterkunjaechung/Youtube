@@ -1,8 +1,10 @@
 import React, { useState, useEffect, } from 'react'
 import axios from 'axios'
 import VideoComment from './VideoComment'
+import styled from "styled-components";
 import CommentForm from './CommentForm'
-import { Comment, Container, Button, Icon, } from 'semantic-ui-react';
+// import { Comment, Container, Button, Icon, } from 'semantic-ui-react';
+import {Image, Comment, Segment, Container, Input, Icon, Header, Grid, Form, Modal, Button} from 'semantic-ui-react';
 
 const Comments = (props) => {
   const [comments, setComments] = useState([])
@@ -41,51 +43,67 @@ const Comments = (props) => {
       })
   }
 
-  const showComments = () => {
-    return (
-      <Container>
+  return(
+    <>
+      <>
+        <Header as={subheaderFont}>
+          X comments
+        </Header>
+        <CommentForm
+          comments={comments}
+          setComments={setComments}
+          addComment={addComment}
+          video_id={props.video_id}
+          toggleForm={toggle}
+        />
+      </>
+      <>
         {comments.map(c => (
           <VideoComment 
             video_id = {video_id}
-            id = {c.id}
-            body = {c.body}
+            comment_id = {c.id}
+            comment_body = {c.body}
             user_id = {c.user_id}
             delete_comment={deleteComment}
             edit_comment={editComment}
-            showComments={showComments}
+            created={c.created_at}
           />
         ))}
-      </Container>
-    )
-  }
-
-  return(
-    <>
-      <div style= {{marginTop: '30px'}}>
-        <hr/>
-        <h1>Comments</h1>
-        <Button color='red' onClick={toggle}>
-          <Icon name='paper plane outline'/>
-        </Button>
-        { showForm ? 
-          <CommentForm
-            showComments={showComments}
-            comments={comments}
-            setComments={setComments}
-            addComment={addComment}
-            video_id={props.video_id}
-            toggleForm={toggle}
-          /> : 
-          null
-        }
-        <div style={{display:'flex', justifyContent:'flex-start', marginTop:'30px'}}>
-          <Comment.Group>
-            {showComments()}
-          </Comment.Group>
-        </div>
-      </div>
+      </>
     </>
   )
 }
+
+const miniMargin = styled.div`
+  margin-right: 20px !important;
+  margin-left: 20px !important;
+`
+const segmentStyle = styled.div`
+  margin-right: 20px !important;
+  margin-left: 20px !important;
+  background: white !important;
+`
+const descriptionFont = styled.div`
+  font-size: 16px !important;
+  font-weight: normal !important;
+  margin-right: 10px !important;
+  margin-left: 10px !important;
+`
+const commentWords = styled.div`
+  margin-top: 5px !important;
+  margin-right: 10px !important;
+  margin-left: 82px !important;
+  font-size: 14px !important;
+  font-weight: normal !important;
+`
+const subheaderFont = styled.div`
+  font-size: 24px !important;
+  font-weight: normal !important;
+`
+const inputWords = styled.div`
+  font-size: 18px !important;
+  font-weight: normal !important;
+  margin: 5px !important;
+`
 
 export default Comments; 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, } from "react";
 import axios from 'axios'
-import { Form, } from "semantic-ui-react";
+import styled from "styled-components";
+import { Header, Segment, Icon, Grid, Input, Image } from "semantic-ui-react";
 
 const CommentForm = (props) => {
   const [title, setTitle] = useState();
@@ -41,28 +42,42 @@ const CommentForm = (props) => {
   };
 
   return ( 
-  <Form onSubmit = {handleSubmit}>
-    <Form.Group>
-    <Form.Input 
-      label = "Title"
-      placeholder = "Question Title"
-      name = "title"
-      required 
-      value = {title}
-      onChange = {(e) => setTitle(e.target.value)}
-    /> 
-    <Form.TextArea 
-      label = "Body"
-      placeholder = "Question"
-      name = "body"
-      required 
-      value = {body}
-      onChange = {(e) => setBody(e.target.value)}
-    /> 
-    </Form.Group> 
-    <Form.Button>Submit Question</Form.Button> 
-    </Form>
+  <Segment>
+    <Grid>
+      <Grid.Row>
+        <Grid.Column width={14}>
+          <Header as='h1'>
+            <Image src={require('../../images/miniAvatar.png')} />
+            <Input 
+              transparent 
+              // label = "Body"
+              required 
+              value = {body}
+              placeholder='Add a public comment' 
+              as={inputWords} 
+              onChange = {(e) => setBody(e.target.value)}
+              />
+          </Header>
+        </Grid.Column>
+        <Grid.Column width={2}>
+          <Icon 
+            name='paper plane' 
+            color='grey' 
+            size="large" 
+            onClick={handleSubmit} 
+            style={{cursor:'pointer'}}
+          />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+  </Segment>
   );
 };
+
+const inputWords = styled.div`
+  font-size: 18px !important;
+  font-weight: normal !important;
+  margin: 5px !important;
+`
 
 export default CommentForm;
