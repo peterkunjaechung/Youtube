@@ -19,7 +19,7 @@ useEffect(() => {
 
   axios.get(`/api/videos/${video_id}`)
   .then(res => {
-    console.log(res.data)
+    // console.log(res.data)
     setVideo(res.data); 
 
   })
@@ -40,7 +40,12 @@ useEffect(() => {
 
   return (
     <>
-      <Image src={require('../images/starter-pic.png')} fluid />  
+    <Segment>
+       <Player
+              playsInline
+              src={video.trailer}
+            /> 
+    </Segment>
       <Segment.Group as={segmentStyle}>
         <Segment as={miniMargin}>
           <Grid columns={2}>
@@ -94,7 +99,7 @@ useEffect(() => {
       <Grid as={miniMargin}>
         <Grid.Row>
           <Grid.Column width={10}>
-            <Comments/>
+            <Comments video_id={video.id}/>
           </Grid.Column>
           <Grid.Column width={6}>
             <Header as={subheaderFont}>
