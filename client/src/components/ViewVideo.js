@@ -1,7 +1,10 @@
 import React,{useState, useContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from "styled-components";
+import Comments from "./comments/Comments"
 import {Image, Segment, Container, Input, Icon, Header, Grid, Form, Modal, Button} from 'semantic-ui-react';
+
+
 
 const ViewVideo = () => { 
   return (
@@ -61,52 +64,21 @@ const ViewVideo = () => {
       </Segment.Group>
       <Grid as={miniMargin}>
         <Grid.Row>
-          <Grid.Column width={11}>
-            <Header as={subheaderFont}>
-              X comments
-            </Header>
-            <Segment>
-              <Header as='h1'>
-                <Image src={require('../images/miniAvatar.png')} />
-                <Input transparent placeholder='Add a public comment' as={inputWords} />
-              </Header>
-            </Segment>
-            {/* THIS IS WHAT YOU MAP THROUGH !!!!!  */}
-            <Segment>
-              <Header as='h1'>
-                <Image src={require('../images/miniAvatar.png')} />
-                <Header.Content>
-                  User Name
-                  <Header.Subheader>how long ago posted</Header.Subheader>
-                </Header.Content>
-                <Header as={commentWords}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                  dolore magna aliqua. 
-                </Header>
-              </Header>
-            </Segment>
-            {/* THIS IS WHAT YOU MAP THROUGH !!!!!  */}
-            {/* THIS IS WHAT YOU MAP THROUGH !!!!!  */}
-            <Segment>
-              <Header as='h1'>
-                <Image src={require('../images/miniAvatar.png')} />
-                <Header.Content>
-                  User Name
-                  <Header.Subheader>how long ago posted</Header.Subheader>
-                </Header.Content>
-                <Header as={commentWords}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                  dolore magna aliqua. 
-                </Header>
-              </Header>
-            </Segment>
-            {/* THIS IS WHAT YOU MAP THROUGH !!!!!  */}
+          <Grid.Column width={10}>
+            <Comments/>
           </Grid.Column>
-          <Grid.Column width={5}>
+          <Grid.Column width={6}>
             <Header as={subheaderFont}>
               Other Videos
             </Header>
-            
+            <Segment>
+              <Grid.Column>
+                vid preview
+              </Grid.Column>
+              <Grid.Column>
+                Video Description
+              </Grid.Column>
+            </Segment>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -129,24 +101,81 @@ const descriptionFont = styled.div`
   margin-right: 10px !important;
   margin-left: 10px !important;
 `
-const commentWords = styled.div`
-  margin-top: 5px !important;
-  margin-right: 10px !important;
-  margin-left: 82px !important;
-  font-size: 14px !important;
-  font-weight: normal !important;
-`
 const subheaderFont = styled.div`
   font-size: 24px !important;
   font-weight: normal !important;
 `
-const inputWords = styled.div`
-  font-size: 18px !important;
-  font-weight: normal !important;
-  margin: 5px !important;
-`
-// const backgroundColor = styled.div`
-//   background-color: rbg(240, 240, 237) !important;
-// `
 
 export default ViewVideo
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <Header as={subheaderFont}>
+// X comments
+// </Header>
+// <Segment>
+// <Header as='h1'>
+//   <Image src={require('../images/miniAvatar.png')} />
+//   <Input transparent placeholder='Add a public comment' as={inputWords} />
+// </Header>
+// </Segment>
+// {/* THIS IS WHAT YOU MAP THROUGH !!!!!  */}
+// <Segment>
+// <Header as='h1'>
+//   <Image src={require('../images/miniAvatar.png')} />
+//   <Header.Content>
+//     User Name
+//     <Header.Subheader>how long ago posted</Header.Subheader>
+//   </Header.Content>
+//   <Header as={commentWords}>
+//     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+//     dolore magna aliqua. 
+//   </Header>
+// </Header>
+// </Segment>
+// {/* THIS IS WHAT YOU MAP THROUGH !!!!!  */}
+// {/* THIS IS WHAT YOU MAP THROUGH !!!!!  */}
+// <Segment>
+// <Header as='h1'>
+//   <Image src={require('../images/miniAvatar.png')} />
+//   <Header.Content>
+//     User Name
+//     <Header.Subheader>how long ago posted</Header.Subheader>
+//   </Header.Content>
+//   <Header as={commentWords}>
+//     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+//     dolore magna aliqua. 
+//   </Header>
+// </Header>
+// </Segment>
+// {/* THIS IS WHAT YOU MAP THROUGH !!!!!  */}
+
+
+
+
+
+
