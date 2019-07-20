@@ -38,7 +38,7 @@ class Home extends React.Component {
       return (
         <>
           <br />
-          <Header as='h1'>All Video</Header>
+          <Header as='h1'>All Videos</Header>
           <br />
           <Grid columns={5}>
             <Grid.Row>
