@@ -44,6 +44,7 @@ useEffect(() => {
        <Player
               playsInline
               src={video.trailer}
+              style={{width: "100%", height: "100%"}}
             /> 
     </Segment>
       <Segment.Group as={segmentStyle}>
