@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, } from 'react-router-dom';
-import { Header, Image, Grid, Card, Button, Icon, } from 'semantic-ui-react';
+import { Header, Container, Image, Grid, Card, Button, Icon, } from 'semantic-ui-react';
 
 class Home extends React.Component {
   state = { videos: [], };
   
   componentDidMount() {
     axios.get('/api/videos')
-      .then(res => console.log(res.data))//this.setState({ videos: res.data, }))
+      .then(res => this.setState({ videos: res.data, }))
   }
   
   // sample = () => {
@@ -44,12 +44,13 @@ class Home extends React.Component {
             <Grid.Row>
           {videos.map( v => (
               <Grid.Column>
+                <Container>
                 <Image src={require(`../images/${v.thumbnail}`)} />
                 <Header>
                   {v.title}
                 </Header>
+              </Container>
               </Grid.Column>
-
           ))}
             </Grid.Row>
           </Grid>

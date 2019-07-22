@@ -12,7 +12,7 @@ const Comments = (props) => {
   const video_id = props.video_id
 
   useEffect(() => {
-    axios.get(`/api/videos/${video_id}/comments`)
+    axios.get(`/api/videos/${3}/comments`)
     .then( res => setComments(res.data))
   }, [])
 
@@ -60,7 +60,7 @@ const Comments = (props) => {
       <>
         {comments.map(c => (
           <VideoComment 
-            video_id = {video_id}
+            video_id = {3}
             comment_id = {c.id}
             comment_body = {c.body}
             user_id = {c.user_id}

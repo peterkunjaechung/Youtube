@@ -2,40 +2,56 @@ import React,{useState, useContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from "styled-components";
 import Comments from "./comments/Comments"
+import { Link, } from 'react-router-dom';
 import {Image, Segment, Container, Input, Icon, Header, Grid, Form, Modal, Button} from 'semantic-ui-react';
-import { Player } from 'video-react';
+import { Player, ControlBar } from 'video-react';
+import { InfoContext,} from '../providers/InfoProvider';
+import TimeAgo from 'react-timeago'
 
 
 
 
-const ViewVideo = () => { 
+const ViewVideo = (props) => { 
+  const [video, setVideo] = useState([])
+  const [videos, setVideos] = useState([])
 
-// get indiviudal videos 
 useEffect(() => {
+  axios.get(`/api/videos/${3}`)
+  .then(res => setVideo(res.data))
 
-})
+  axios.get('/api/videos')
+  .then(res => setVideos(...res.data))
+}, [])
 
   return (
     <>
-      <Image src={require('../images/starter-pic.png')} fluid />  
+      <Link href={video.trailer}>
+        <Image src={require(`../images/Sintel.jpg`)} fluid />  
+      </Link>
+      {/* <Player
+      playsInline
+      src={video.trailer}/> */}
       <Segment.Group as={segmentStyle}>
         <Segment as={miniMargin}>
           <Grid columns={2}>
               <Grid.Column>
                 <Header
                   as='h2'
-                  content='Video Title'
-                  subheader='Date Imported'
+                  content={video.title}
                 />
+                <Header.Subheader>
+                  <TimeAgo date={video.created_at}/>
+
+                </Header.Subheader>
               </Grid.Column>
               <Grid.Column textAlign="right">
                 <Button basic>
                   <Icon color='yellow' name='thumbs up'/>
-                  upvotes
+                  {video.likes}
                 </Button>
                 <Button basic>
                   <Icon color='yellow' name='thumbs down'/>
-                  downvotes
+                  {video.dislikes}
                 </Button>
               </Grid.Column>
           </Grid>
@@ -48,7 +64,7 @@ useEffect(() => {
                 <Header as='h2'>
                   <Image src={require('../images/avatar.png')} />
                   <Header.Content>
-                    User Name
+                    username: {props.username}
                     <Header.Subheader>X number of subscribers</Header.Subheader>
                   </Header.Content>
                 </Header>
@@ -61,9 +77,7 @@ useEffect(() => {
             </Grid.Row>
             <Grid.Row>
               <Header as={descriptionFont}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-              ex ea commodo consequat.
+              {video.description}
               </Header>
               <br/>
             </Grid.Row>
@@ -79,14 +93,16 @@ useEffect(() => {
             <Header as={subheaderFont}>
               Other Videos
             </Header>
+            {/* {videos.map(vs => (
             <Segment>
               <Grid.Column>
-                vid preview
+                {`../images/${vs.thumbnail}`}
               </Grid.Column>
               <Grid.Column>
-                Video Description
+                {vs.description}
               </Grid.Column>
             </Segment>
+            ))} */}
           </Grid.Column>
         </Grid.Row>
       </Grid>

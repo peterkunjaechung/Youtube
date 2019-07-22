@@ -6,7 +6,7 @@ export const InfoConsumer = InfoContext.Consumer;
 
 export class InfoProvider extends React.Component {
   state = { 
-    featuresFromHistory: [],
+    chosen: [],
   }
 
   render() {
@@ -14,8 +14,6 @@ export class InfoProvider extends React.Component {
     return (
       <InfoContext.Provider value={{
        ...this.state,
-       dumpHistory: this.dumpHistory,
-
       }}>
       {this.props.children}
     </InfoContext.Provider>
